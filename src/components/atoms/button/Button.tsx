@@ -1,22 +1,30 @@
-export type ButtonProps = {
-  children: React.ReactNode;
-  onClick?: () => void;
-  variant?: 'primary' | 'secondary';
-};
+import { cva, type VariantProps } from 'class-variance-authority';
 
-export function Button({ children, onClick, variant = 'primary' }: ButtonProps) {
-  const baseStyles = 'px-4 py-2 rounded font-medium';
+const buttonStyles = cva('px-4 py-2 rounded-md font-medium transition-colors', {
+  variants: {
+    variant: {
+      primary: 'bg-primary text-white hover:bg-primary-hover',
+      secondary: 'bg-secondary text-black hover:bg-secondary-hover',
+    },
+    size: {
+      sm: 'px-2 py-1 text-sm',
+      md: 'px-4 py-2 text-md',
+      lg: 'px-6 py-3 text-lg',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+    size: 'md',
+  },
+});
 
-  const variantStyles = {
-    primary: 'bg-primary text-white hover:bg-primary-hover',
-    secondary: 'bg-secondary text-black hover:bg-secondary-hover',
-  };
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonStyles>;
 
+export function Button({ variant, size, className, ...props }: ButtonProps) {
   return (
     <button
-      onClick={onClick}
-      className={`${baseStyles} ${variantStyles[variant]}`}>
-      {children}
-    </button>
+      className={buttonStyles({ variant, size, className })}
+      {...props}
+    />
   );
 }

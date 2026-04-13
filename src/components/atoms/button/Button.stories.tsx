@@ -10,6 +10,10 @@ const meta: Meta<typeof Button> = {
       control: 'select',
       options: ['primary', 'secondary'],
     },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+    },
   },
   parameters: {
     docs: {
@@ -24,6 +28,15 @@ const meta: Meta<typeof Button> = {
 export default meta;
 
 type Story = StoryObj<typeof Button>;
+
+export const Playground: Story = {
+  tags: ['!autodocs'],
+  args: {
+    children: 'Click me',
+    variant: 'primary',
+    size: 'md',
+  },
+};
 
 export const Primary: Story = {
   args: {
@@ -50,5 +63,29 @@ export const Secondary: Story = {
         story: 'Used for secondary call-to-action buttons.',
       },
     },
+  },
+};
+
+export const Small: Story = {
+  args: {
+    children: 'Click me',
+    variant: 'primary',
+    size: 'sm',
+  },
+};
+
+export const Medium: Story = {
+  args: {
+    children: 'Click me',
+    variant: 'primary',
+    size: 'md',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    children: 'Click me',
+    variant: 'primary',
+    size: 'lg',
   },
 };
