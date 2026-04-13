@@ -1,17 +1,15 @@
 import { test, expect } from '@playwright/test';
+import { fetchStorybookEntries, filterStoriesByComponent } from './utils/storybook.helpers';
 
-const stories = [
-  'ui-button--primary',
-  'ui-button--secondary',
-  'ui-button--small',
-  'ui-button--medium',
-  'ui-button--large',
-];
+const entries = await fetchStorybookEntries();
+const stories = filterStoriesByComponent(entries, 'UI/Button');
 
-for (const story of stories) {
-  test(`Button - ${story}`, async ({ page }) => {
-    await page.goto(`/iframe.html?id=${story}`);
+test.describe('Button visual regression', () => {
+  for (const story of stories) {
+    test(`renders ${story.name}`, async ({ page }) => {
+      await page.goto(`/iframe.html?id=${story.id}`);
 
-    await expect(page).toHaveScreenshot(`${story}.png`);
-  });
-}
+      await expect(page).toHaveScreenshot(`${story.id}.png`);
+    });
+  }
+});
