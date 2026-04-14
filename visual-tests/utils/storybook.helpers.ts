@@ -20,3 +20,21 @@ export function filterStoriesByComponent(entries: StorybookEntry[], componentTit
     return entry.title === componentTitle && !['playground', 'docs'].some((exclude) => entry.id.includes(exclude));
   });
 }
+
+export function groupStoriesByComponent(entries: StorybookEntry[]) {
+  const map = new Map<string, StorybookEntry[]>();
+
+  for (const entry of entries) {
+    if (['playground', 'docs'].some((exclude) => entry.id.includes(exclude))) {
+      continue;
+    }
+
+    if (!map.has(entry.title)) {
+      map.set(entry.title, []);
+    }
+
+    map.get(entry.title)!.push(entry);
+  }
+
+  return map;
+}

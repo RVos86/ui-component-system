@@ -1,0 +1,17 @@
+import { test, expect } from '@playwright/test';
+import { fetchStorybookEntries, groupStoriesByComponent } from './utils/storybook.helpers';
+
+const entries = await fetchStorybookEntries();
+const components = groupStoriesByComponent(entries);
+
+for (const [componentName, stories] of components) {
+  test.describe(`${componentName} visual regression`, () => {
+    for (const story of stories) {
+      test(`renders ${story.name}`, async ({ page }) => {
+        await page.goto(`/iframe.html?id=${story.id}`);
+
+        await expect(page).toHaveScreenshot(`${componentName}-${story.name}.png`);
+      });
+    }
+  });
+}
