@@ -27,9 +27,6 @@ jobs:
       - name: Build Storybook
         run: npm run build-storybook
 
-      - name: Serve Storybook
-        run: npx http-server storybook-static -p 6006 &
-
       - name: Run visual tests
         run: npx playwright test
 
