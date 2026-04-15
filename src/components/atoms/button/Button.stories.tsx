@@ -38,7 +38,7 @@ export const Playground: Story = {
   },
 };
 
-export const PrimaryButton: Story = {
+export const Primary: Story = {
   args: {
     children: 'Click me',
     variant: 'primary',
@@ -52,7 +52,7 @@ export const PrimaryButton: Story = {
   },
 };
 
-export const SecondaryButton: Story = {
+export const Secondary: Story = {
   args: {
     children: 'Click me',
     variant: 'secondary',
@@ -66,7 +66,7 @@ export const SecondaryButton: Story = {
   },
 };
 
-export const SmallButton: Story = {
+export const Small: Story = {
   args: {
     children: 'Click me',
     variant: 'primary',
@@ -74,7 +74,7 @@ export const SmallButton: Story = {
   },
 };
 
-export const MediumButton: Story = {
+export const Medium: Story = {
   args: {
     children: 'Click me',
     variant: 'primary',
@@ -82,7 +82,7 @@ export const MediumButton: Story = {
   },
 };
 
-export const LargeButton: Story = {
+export const Large: Story = {
   args: {
     children: 'Click me',
     variant: 'primary',
