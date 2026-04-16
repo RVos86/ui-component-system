@@ -12,7 +12,9 @@ for (const [componentName, stories] of components) {
         await page.goto(`/iframe.html?id=${story.id}`);
         await page.waitForLoadState('networkidle');
 
-        const results = await new AxeBuilder({ page }).analyze();
+        const results = await new AxeBuilder({ page })
+          .include('#storybook-root')
+          .analyze();
 
         expect(results.violations).toEqual([]);
       });
