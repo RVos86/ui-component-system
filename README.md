@@ -1,7 +1,7 @@
 # 🎨 UI Component System
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Build](https://img.shields.io/github/actions/workflow/status/rvos86/ui-component-system/visual-tests.yml?label=tests)
+![Build](https://img.shields.io/github/actions/workflow/status/rvos86/ui-component-system/ci.yml?label=tests)
 ![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)
 ![Storybook](https://img.shields.io/badge/storybook-ready-ff4785)
 
@@ -104,11 +104,12 @@ npx playwright test
 
 ## ⚙️ CI Pipeline
 
-Automated GitHub Actions pipeline:
+Automated GitHub Actions pipeline with four jobs:
 
-- Builds Storybook
-- Runs Playwright visual tests
-- Fails on visual regressions
+- **Lint & Typecheck** — ESLint + TypeScript, gates all other jobs
+- **Unit Tests** — Vitest + Testing Library
+- **Visual Tests** — Playwright against a built Storybook
+- Fails fast on lint/type errors before running tests
 - Designed for PR-based workflows
 
 ---
