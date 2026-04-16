@@ -16,5 +16,15 @@ export default defineConfig({
     setupFiles: './src/test/setup.ts',
     include: ['src/**/*.test.ts', 'src/**/*.test.tsx'],
     globals: true,
+    coverage: {
+      provider: 'v8',
+      include: ['src/components/**'],
+      exclude: ['src/components/**/*.stories.tsx'],
+      thresholds: {
+        lines: 80,
+        functions: 90,
+        branches: 75,
+      },
+    },
   },
 });
