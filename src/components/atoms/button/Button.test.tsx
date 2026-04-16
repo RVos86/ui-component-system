@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 import { Button } from './Button';
 import userEvent from '@testing-library/user-event';
+import { axe } from 'jest-axe';
 
 describe('Button', () => {
   it('renders correctly', () => {
@@ -84,6 +85,18 @@ describe('Button', () => {
       render(<Button disabled>Click me</Button>);
 
       expect(screen.getByRole('button')).toHaveClass('disabled:opacity-50', 'disabled:cursor-not-allowed');
+    });
+
+    it('has no axe violations', async () => {
+      const { container } = render(<Button>Click me</Button>);
+
+      expect(await axe(container)).toHaveNoViolations();
+    });
+
+    it('has no axe violations when disabled', async () => {
+      const { container } = render(<Button disabled>Click me</Button>);
+
+      expect(await axe(container)).toHaveNoViolations();
     });
   });
 });
