@@ -58,4 +58,32 @@ describe('Button', () => {
 
     expect(screen.getByText('Click me')).toHaveClass(expectedClass);
   });
+
+  describe('accessibility', () => {
+    it('has type="button" by default', () => {
+      render(<Button>Click me</Button>);
+
+      expect(screen.getByRole('button')).toHaveAttribute('type', 'button');
+    });
+
+    it('sets aria-disabled when disabled', () => {
+      render(<Button disabled>Click me</Button>);
+
+      const button = screen.getByRole('button');
+      expect(button).toBeDisabled();
+      expect(button).toHaveAttribute('aria-disabled', 'true');
+    });
+
+    it('does not set aria-disabled when enabled', () => {
+      render(<Button>Click me</Button>);
+
+      expect(screen.getByRole('button')).not.toHaveAttribute('aria-disabled');
+    });
+
+    it('applies disabled styles when disabled', () => {
+      render(<Button disabled>Click me</Button>);
+
+      expect(screen.getByRole('button')).toHaveClass('disabled:opacity-50', 'disabled:cursor-not-allowed');
+    });
+  });
 });
