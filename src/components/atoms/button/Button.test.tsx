@@ -15,9 +15,7 @@ describe('Button', () => {
     const handleClick = vi.fn();
 
     render(
-      <Button
-        variant="primary"
-        onClick={handleClick}>
+      <Button variant="primary" onClick={handleClick}>
         Click me
       </Button>
     );
@@ -25,5 +23,39 @@ describe('Button', () => {
     await user.click(screen.getByText('Click me'));
 
     expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('does not fire click when disabled', async () => {
+    const user = userEvent.setup();
+    const handleClick = vi.fn();
+
+    render(
+      <Button variant="primary" disabled onClick={handleClick}>
+        Click me
+      </Button>
+    );
+
+    await user.click(screen.getByText('Click me'));
+
+    expect(handleClick).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ['primary', 'bg-primary'],
+    ['secondary', 'bg-secondary'],
+  ] as const)('applies %s variant classes', (variant, expectedClass) => {
+    render(<Button variant={variant}>Click me</Button>);
+
+    expect(screen.getByText('Click me')).toHaveClass(expectedClass);
+  });
+
+  it.each([
+    ['sm', 'text-sm'],
+    ['md', 'text-md'],
+    ['lg', 'text-lg'],
+  ] as const)('applies %s size classes', (size, expectedClass) => {
+    render(<Button size={size}>Click me</Button>);
+
+    expect(screen.getByText('Click me')).toHaveClass(expectedClass);
   });
 });
