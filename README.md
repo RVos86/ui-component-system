@@ -17,6 +17,7 @@ This project demonstrates how to design **frontend architecture, testing strateg
 - 📚 Storybook as single source of truth
 - 🧪 Automated unit + visual testing
 - 👀 Playwright visual regression testing (Story-driven)
+- ♿ Automated a11y audits on every story via axe + Playwright
 - ⚙️ Fully automated CI pipeline (GitHub Actions)
 - 🎨 Design tokens + Tailwind + CVA
 - 🚀 Zero-maintenance test generation system
@@ -109,7 +110,18 @@ npm run test:coverage
 - Generates tests dynamically per story
 
 ```
-npx playwright test
+npx playwright test all.visual.spec.ts
+```
+
+### Accessibility Tests
+
+- axe-core + Playwright
+- Automatically audits every story for a11y violations
+- Scoped to the component under test, not the Storybook chrome
+- Components also have manual a11y assertions + jest-axe unit tests
+
+```
+npx playwright test all.a11y.spec.ts
 ```
 
 ## ⚙️ CI Pipeline
@@ -118,7 +130,8 @@ Automated GitHub Actions pipeline with four jobs:
 
 - **Lint & Typecheck** — ESLint + TypeScript, gates all other jobs
 - **Unit Tests** — Vitest + Testing Library, with coverage thresholds enforced
-- **Visual Tests** — Playwright against a built Storybook
+- **Visual Tests** — Playwright screenshot regression against a built Storybook
+- **Accessibility Tests** — axe audit on every story via Playwright, automatically
 - Fails fast on lint/type errors before running tests
 - Coverage report uploaded as an artifact on every run
 - Designed for PR-based workflows
