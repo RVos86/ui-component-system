@@ -92,6 +92,16 @@ Used for:
 npm run test
 ```
 
+### Coverage
+
+- v8 coverage provider via Vitest
+- Scoped to `src/components/`
+- Thresholds: 80% lines, 90% functions, 75% branches
+
+```
+npm run test:coverage
+```
+
 ### Visual Regression Tests
 
 - Playwright + Storybook
@@ -107,9 +117,10 @@ npx playwright test
 Automated GitHub Actions pipeline with four jobs:
 
 - **Lint & Typecheck** — ESLint + TypeScript, gates all other jobs
-- **Unit Tests** — Vitest + Testing Library
+- **Unit Tests** — Vitest + Testing Library, with coverage thresholds enforced
 - **Visual Tests** — Playwright against a built Storybook
 - Fails fast on lint/type errors before running tests
+- Coverage report uploaded as an artifact on every run
 - Designed for PR-based workflows
 
 ---
