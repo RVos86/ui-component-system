@@ -7,7 +7,7 @@
 
 A scalable, production-ready **component-driven UI system** built with React, TypeScript, and modern frontend tooling.
 
-This project demonstrates how to design **frontend architecture, testing strategy, and design systems at scale**.
+Designed as a portfolio project to demonstrate **frontend architecture, system thinking, and automation at scale**.
 
 ---
 
@@ -24,34 +24,62 @@ This project demonstrates how to design **frontend architecture, testing strateg
 
 ---
 
-## 🧠 Why this project exists
+## 🔬 Why this project exists
 
-This project focuses on:
+> This repository is intentionally built as a portfolio project to demonstrate how I think about scalable frontend systems beyond isolated components.
 
-> Building a scalable UI system, not just components.
+This project explores:
 
-It demonstrates how to:
+- Treating UI as an **engineered system**
+- Reducing **manual testing overhead** through automation
+- **Scaling** component architecture in a predictable way
+- Using **Storybook** as a **single source of truth** for development and testing
 
-- Treat UI as an **engineered system**
-- Avoid manual test maintenance
-- Use Storybook as a **testing data source**
-- Automate visual regression at scale
+More importantly, it reflects how I approach:
+
+- **System design over ad-hoc implementation**
+- **Automation over manual processes**
+- **Consistency through constraints (design tokens, CVA)**
+- **Quality as a built-in concern (testing + CI), not an afterthought**
 
 ---
 
-## 🧱 Architecture
+## 👀 What recruiters should look at
 
-- `src/components/`
-  - `atoms/`
-  - `molecules/`
-  - `organisms/`
+If you only have a few minutes, start here:
 
-### Principles:
+- 🧭 **Architecture Decisions** — how the system scales
+- 🧪 **Testing Strategy** — automated visual + a11y testing via Storybook
+- ⚙️ **CI Pipeline** — full quality automation on every PR
+- 🎨 **Design System** — consistency via tokens + CVA
 
-- Reusable & composable components
-- Strong separation of concerns
-- Fully typed APIs (TypeScript)
-- Consistent design via tokens
+💡 This project is less about individual components, and more about **how everything fits together as a system**.
+
+---
+
+## 🧭 Architecture Decisions
+
+This project is intentionally designed as a _system_, not a collection of components.
+
+Key decisions:
+
+- **Component-driven structure (Atomic Design inspired)**  
+  Enforces scalability through clear composition layers.
+
+- **Strong design system constraints**  
+  UI consistency is enforced through CVA + design tokens rather than ad-hoc styling.
+
+- **Type-safe component APIs (TypeScript)**  
+  Prevents invalid usage and improves maintainability at scale.
+
+- **Separation of concerns by composition layer**  
+  Atoms, molecules, and organisms enforce predictable complexity growth.
+
+- **Test-driven UI validation strategy**  
+  Storybook acts as the source of truth for visual and accessibility testing.
+
+- **Automation-first CI pipeline**  
+  All quality checks (lint, types, unit, visual, a11y) run automatically on PRs.
 
 ---
 
@@ -79,6 +107,13 @@ Used for:
 - Documentation (autodocs)
 - Visual variant exploration
 - Test data source for Playwright
+
+As part of the testing strategy, each Storybook story automatically becomes:
+
+- a visual regression test
+- an accessibility audit
+
+→ No manual test maintenance required
 
 ---
 
@@ -189,6 +224,7 @@ This project demonstrates:
 - Scalable frontend architecture
 - Automation-first testing strategy
 - Real-world CI/CD workflows
+- Thoughtful use of AI tools (e.g. Claude Code) to support productivity, while maintaining full ownership of architecture and design decisions
 
 ---
 
