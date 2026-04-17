@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority';
 
-const typographyStyles = cva('', {
+const typographyStyles = cva('font-sans', {
   variants: {
     variant: {
       h1: 'text-5xl font-bold leading-tight',
