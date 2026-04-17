@@ -5,7 +5,7 @@
 ![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)
 ![Storybook](https://img.shields.io/badge/storybook-ready-ff4785)
 
-A scalable, production-ready **component-driven UI system** built with React, TypeScript, and modern frontend tooling.
+A scalable **component-driven UI system** built with React, TypeScript, and production-grade tooling.
 
 Designed as a portfolio project to demonstrate **frontend architecture, system thinking, and automation at scale**.
 
