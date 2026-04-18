@@ -20,6 +20,8 @@ for (const [componentName, stories] of components) {
 
       test(`renders ${story.name}`, async ({ page }) => {
         await page.goto(`/iframe.html?id=${story.id}`);
+        await page.waitForLoadState('networkidle');
+        await page.evaluate(() => document.fonts.ready);
 
         await expect(page).toHaveScreenshot(`${componentFolder}/${storyFileName}.png`, {
           // Allow minor rendering differences between OS/CI environments

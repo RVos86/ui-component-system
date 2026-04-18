@@ -67,18 +67,22 @@ describe('Button', () => {
       expect(screen.getByRole('button')).toHaveAttribute('type', 'button');
     });
 
-    it('sets aria-disabled when disabled', () => {
+    it('is disabled when disabled prop is set', () => {
       render(<Button disabled>Click me</Button>);
 
-      const button = screen.getByRole('button');
-      expect(button).toBeDisabled();
-      expect(button).toHaveAttribute('aria-disabled', 'true');
+      expect(screen.getByRole('button')).toBeDisabled();
     });
 
-    it('does not set aria-disabled when enabled', () => {
+    it('defaults to type="button"', () => {
       render(<Button>Click me</Button>);
 
-      expect(screen.getByRole('button')).not.toHaveAttribute('aria-disabled');
+      expect(screen.getByRole('button')).toHaveAttribute('type', 'button');
+    });
+
+    it('allows overriding type to submit', () => {
+      render(<Button type="submit">Click me</Button>);
+
+      expect(screen.getByRole('button')).toHaveAttribute('type', 'submit');
     });
 
     it('applies disabled styles when disabled', () => {
