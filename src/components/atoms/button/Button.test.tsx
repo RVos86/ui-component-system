@@ -62,13 +62,17 @@ describe('Button', () => {
 
   describe('icons', () => {
     it('renders a left icon when leftIcon is provided', () => {
-      render(<Button leftIcon={<span data-testid="left-icon" />}>Click me</Button>);
+      render(
+        <Button leftIcon={<span data-testid="left-icon" />}>Click me</Button>
+      );
 
       expect(screen.getByTestId('left-icon')).toBeInTheDocument();
     });
 
     it('renders a right icon when rightIcon is provided', () => {
-      render(<Button rightIcon={<span data-testid="right-icon" />}>Click me</Button>);
+      render(
+        <Button rightIcon={<span data-testid="right-icon" />}>Click me</Button>
+      );
 
       expect(screen.getByTestId('right-icon')).toBeInTheDocument();
     });
@@ -122,7 +126,10 @@ describe('Button', () => {
     it('applies disabled styles when disabled', () => {
       render(<Button disabled>Click me</Button>);
 
-      expect(screen.getByRole('button')).toHaveClass('disabled:opacity-50', 'disabled:cursor-not-allowed');
+      expect(screen.getByRole('button')).toHaveClass(
+        'disabled:opacity-50',
+        'disabled:cursor-not-allowed'
+      );
     });
 
     it('has no axe violations', async () => {

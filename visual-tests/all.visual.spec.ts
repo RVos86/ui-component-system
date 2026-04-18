@@ -1,5 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { fetchStorybookEntries, groupStoriesByComponent } from './utils/storybook.helpers';
+import {
+  fetchStorybookEntries,
+  groupStoriesByComponent,
+} from './utils/storybook.helpers';
 import { slugify } from './utils/slugify';
 
 const entries = await fetchStorybookEntries();
@@ -23,10 +26,13 @@ for (const [componentName, stories] of components) {
         await page.waitForLoadState('networkidle');
         await page.evaluate(() => document.fonts.ready);
 
-        await expect(page).toHaveScreenshot(`${componentFolder}/${storyFileName}.png`, {
-          // Allow minor rendering differences between OS/CI environments
-          maxDiffPixelRatio: 0.02,
-        });
+        await expect(page).toHaveScreenshot(
+          `${componentFolder}/${storyFileName}.png`,
+          {
+            // Allow minor rendering differences between OS/CI environments
+            maxDiffPixelRatio: 0.02,
+          }
+        );
       });
     }
   });

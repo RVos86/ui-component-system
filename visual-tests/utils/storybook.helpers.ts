@@ -15,9 +15,15 @@ export async function fetchStorybookEntries() {
   return Object.values(data.entries);
 }
 
-export function filterStoriesByComponent(entries: StorybookEntry[], componentTitle: string) {
+export function filterStoriesByComponent(
+  entries: StorybookEntry[],
+  componentTitle: string
+) {
   return entries.filter((entry) => {
-    return entry.title === componentTitle && !['playground', 'docs'].some((exclude) => entry.id.includes(exclude));
+    return (
+      entry.title === componentTitle &&
+      !['playground', 'docs'].some((exclude) => entry.id.includes(exclude))
+    );
   });
 }
 

@@ -79,7 +79,7 @@ Key decisions:
   Storybook acts as the source of truth for visual and accessibility testing.
 
 - **Automation-first CI pipeline**  
-  All quality checks (lint, types, unit, visual, a11y) run automatically on PRs.
+  All quality checks (lint, format, types, unit, visual, a11y) run automatically on PRs.
 
 ---
 
@@ -163,7 +163,7 @@ npx playwright test all.a11y.spec.ts
 
 Automated GitHub Actions pipeline with four jobs:
 
-- **Lint & Typecheck** — ESLint + TypeScript, gates all other jobs
+- **Lint & Typecheck** — ESLint + TypeScript + Prettier format check, gates all other jobs
 - **Unit Tests** — Vitest + Testing Library, with coverage thresholds enforced
 - **Visual Tests** — Playwright screenshot regression against a built Storybook
 - **Accessibility Tests** — axe audit on every story via Playwright, automatically

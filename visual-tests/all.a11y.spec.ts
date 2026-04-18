@@ -1,6 +1,9 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
-import { fetchStorybookEntries, groupStoriesByComponent } from './utils/storybook.helpers';
+import {
+  fetchStorybookEntries,
+  groupStoriesByComponent,
+} from './utils/storybook.helpers';
 
 const entries = await fetchStorybookEntries();
 const components = groupStoriesByComponent(entries);

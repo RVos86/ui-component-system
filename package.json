@@ -12,7 +12,9 @@
     "build-storybook": "storybook build",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@fontsource/geist": "^5.2.8",
@@ -42,6 +44,7 @@
     "@vitest/coverage-v8": "^4.1.4",
     "autoprefixer": "^10.4.27",
     "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "eslint-plugin-storybook": "^10.3.5",
@@ -50,6 +53,7 @@
     "jsdom": "^29.0.2",
     "playwright": "^1.59.1",
     "postcss": "^8.5.9",
+    "prettier": "^3.8.3",
     "storybook": "^10.3.5",
     "tailwindcss": "^3.4.19",
     "typescript": "~6.0.2",

@@ -5,8 +5,10 @@ const buttonStyles = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-primary text-white hover:bg-primary-hover focus-visible:ring-primary',
-        secondary: 'bg-secondary text-black hover:bg-secondary-hover focus-visible:ring-secondary',
+        primary:
+          'bg-primary text-white hover:bg-primary-hover focus-visible:ring-primary',
+        secondary:
+          'bg-secondary text-black hover:bg-secondary-hover focus-visible:ring-secondary',
       },
       size: {
         sm: 'px-2 py-1 text-sm',
@@ -33,7 +35,17 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
     rightIcon?: React.ReactNode;
   };
 
-export function Button({ variant, size = 'md', className, disabled, type, leftIcon, rightIcon, children, ...props }: ButtonProps) {
+export function Button({
+  variant,
+  size = 'md',
+  className,
+  disabled,
+  type,
+  leftIcon,
+  rightIcon,
+  children,
+  ...props
+}: ButtonProps) {
   const iconClass = iconSize[size ?? 'md'];
 
   return (
@@ -43,9 +55,21 @@ export function Button({ variant, size = 'md', className, disabled, type, leftIc
       disabled={disabled}
       {...props}
     >
-      {leftIcon && <span className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}>{leftIcon}</span>}
+      {leftIcon && (
+        <span
+          className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}
+        >
+          {leftIcon}
+        </span>
+      )}
       {children}
-      {rightIcon && <span className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}>{rightIcon}</span>}
+      {rightIcon && (
+        <span
+          className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}
+        >
+          {rightIcon}
+        </span>
+      )}
     </button>
   );
 }

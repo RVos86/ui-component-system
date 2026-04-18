@@ -87,7 +87,8 @@ export const BodyAsLabel: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Flexible variants (body, small, caption) support an `as` prop to override the rendered element.',
+        story:
+          'Flexible variants (body, small, caption) support an `as` prop to override the rendered element.',
       },
     },
   },
