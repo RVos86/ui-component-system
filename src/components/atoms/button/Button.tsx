@@ -53,20 +53,17 @@ export function Button({
       type={type ?? 'button'}
       className={buttonStyles({ variant, size, className })}
       disabled={disabled}
-      {...props}
-    >
+      {...props}>
       {leftIcon && (
         <span
-          className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}
-        >
+          className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}>
           {leftIcon}
         </span>
       )}
       {children}
       {rightIcon && (
         <span
-          className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}
-        >
+          className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}>
           {rightIcon}
         </span>
       )}

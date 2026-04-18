@@ -81,8 +81,7 @@ describe('Button', () => {
       render(
         <Button
           leftIcon={<span data-testid="left-icon" />}
-          rightIcon={<span data-testid="right-icon" />}
-        >
+          rightIcon={<span data-testid="right-icon" />}>
           Click me
         </Button>
       );
