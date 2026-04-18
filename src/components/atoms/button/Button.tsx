@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const buttonStyles = cva(
-  'px-4 py-2 rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed',
+  'inline-flex items-center gap-2 rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed',
   {
     variants: {
       variant: {
@@ -21,15 +21,31 @@ const buttonStyles = cva(
   }
 );
 
-export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonStyles>;
+const iconSize = {
+  sm: 'size-3.5',
+  md: 'size-4',
+  lg: 'size-5',
+} as const;
 
-export function Button({ variant, size, className, disabled, type, ...props }: ButtonProps) {
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+  VariantProps<typeof buttonStyles> & {
+    leftIcon?: React.ReactNode;
+    rightIcon?: React.ReactNode;
+  };
+
+export function Button({ variant, size = 'md', className, disabled, type, leftIcon, rightIcon, children, ...props }: ButtonProps) {
+  const iconClass = iconSize[size ?? 'md'];
+
   return (
     <button
       type={type ?? 'button'}
       className={buttonStyles({ variant, size, className })}
       disabled={disabled}
       {...props}
-    />
+    >
+      {leftIcon && <span className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}>{leftIcon}</span>}
+      {children}
+      {rightIcon && <span className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}>{rightIcon}</span>}
+    </button>
   );
 }

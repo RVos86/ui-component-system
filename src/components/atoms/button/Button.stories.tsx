@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Plus, ArrowRight, Trash2 } from 'lucide-react';
 import { Button } from './Button';
 
 const meta: Meta<typeof Button> = {
@@ -87,5 +88,30 @@ export const Large: Story = {
     children: 'Click me',
     variant: 'primary',
     size: 'lg',
+  },
+};
+
+export const WithLeftIcon: Story = {
+  args: {
+    children: 'Create task',
+    variant: 'primary',
+    leftIcon: <Plus />,
+  },
+};
+
+export const WithRightIcon: Story = {
+  args: {
+    children: 'Continue',
+    variant: 'primary',
+    rightIcon: <ArrowRight />,
+  },
+};
+
+export const WithBothIcons: Story = {
+  args: {
+    children: 'Delete',
+    variant: 'secondary',
+    leftIcon: <Trash2 />,
+    rightIcon: <ArrowRight />,
   },
 };
