@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 
 const buttonStyles = cva(
-  'px-4 py-2 rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed',
+  'px-4 py-2 rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed',
   {
     variants: {
       variant: {
@@ -23,13 +23,12 @@ const buttonStyles = cva(
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonStyles>;
 
-export function Button({ variant, size, className, disabled, ...props }: ButtonProps) {
+export function Button({ variant, size, className, disabled, type, ...props }: ButtonProps) {
   return (
     <button
-      type="button"
+      type={type ?? 'button'}
       className={buttonStyles({ variant, size, className })}
       disabled={disabled}
-      aria-disabled={disabled}
       {...props}
     />
   );

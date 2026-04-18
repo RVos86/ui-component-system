@@ -8,6 +8,7 @@ export default {
         sans: ['Inter', 'sans-serif'],
       },
       colors: {
+        background: 'var(--background)',
         primary: {
           DEFAULT: '#2563eb', // blue-600
           hover: '#1d4ed8',
