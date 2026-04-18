@@ -47,7 +47,7 @@ describe('Button', () => {
   ] as const)('applies %s variant classes', (variant, expectedClass) => {
     render(<Button variant={variant}>Click me</Button>);
 
-    expect(screen.getByText('Click me')).toHaveClass(expectedClass);
+    expect(screen.getByRole('button')).toHaveClass(expectedClass);
   });
 
   it.each([
@@ -58,6 +58,40 @@ describe('Button', () => {
     render(<Button size={size}>Click me</Button>);
 
     expect(screen.getByText('Click me')).toHaveClass(expectedClass);
+  });
+
+  describe('icons', () => {
+    it('renders a left icon when leftIcon is provided', () => {
+      render(<Button leftIcon={<span data-testid="left-icon" />}>Click me</Button>);
+
+      expect(screen.getByTestId('left-icon')).toBeInTheDocument();
+    });
+
+    it('renders a right icon when rightIcon is provided', () => {
+      render(<Button rightIcon={<span data-testid="right-icon" />}>Click me</Button>);
+
+      expect(screen.getByTestId('right-icon')).toBeInTheDocument();
+    });
+
+    it('renders both icons when both are provided', () => {
+      render(
+        <Button
+          leftIcon={<span data-testid="left-icon" />}
+          rightIcon={<span data-testid="right-icon" />}
+        >
+          Click me
+        </Button>
+      );
+
+      expect(screen.getByTestId('left-icon')).toBeInTheDocument();
+      expect(screen.getByTestId('right-icon')).toBeInTheDocument();
+    });
+
+    it('does not render icon wrappers when no icons are provided', () => {
+      const { container } = render(<Button>Click me</Button>);
+
+      expect(container.querySelectorAll('span')).toHaveLength(0);
+    });
   });
 
   describe('accessibility', () => {
