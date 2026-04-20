@@ -44,16 +44,17 @@ More importantly, it reflects how I approach:
 
 ---
 
-## 👀 What recruiters should look at
+## 🧩 System in Practice
 
-If you only have a few minutes, start here:
+While this repository primarily focuses on the UI component system and architecture, it is also applied in a real example application: **TaskFlow**.
 
-- 🧭 **Architecture Decisions** — how the system scales
-- 🧪 **Testing Strategy** — automated visual + a11y testing via Storybook
-- ⚙️ **CI Pipeline** — full quality automation on every PR
-- 🎨 **Design System** — consistency via tokens + CVA
+TaskFlow is a task management app used to demonstrate how the system behaves in a realistic scenario, including:
 
-💡 This project is less about individual components, and more about **how everything fits together as a system**.
+- Complex component composition
+- Real-world state management patterns
+- Consistent UI behavior across features
+
+→ The app itself is not the goal, but a **validation of the system design in practice**.
 
 ---
 
@@ -161,13 +162,15 @@ npx playwright test all.a11y.spec.ts
 
 ## ⚙️ CI Pipeline
 
-Automated GitHub Actions pipeline with four jobs:
+Automated GitHub Actions pipeline with six jobs across two stages:
 
-- **Lint & Typecheck** — ESLint + TypeScript + Prettier format check, gates all other jobs
+- **Format** — Prettier format check
+- **Lint** — ESLint
+- **Typecheck** — TypeScript, gates the test jobs below
 - **Unit Tests** — Vitest + Testing Library, with coverage thresholds enforced
 - **Visual Tests** — Playwright screenshot regression against a built Storybook
 - **Accessibility Tests** — axe audit on every story via Playwright, automatically
-- Fails fast on lint/type errors before running tests
+- Fails fast on format/lint/type errors before running tests
 - Coverage report uploaded as an artifact on every run
 - Designed for PR-based workflows
 
@@ -178,7 +181,7 @@ Automated GitHub Actions pipeline with four jobs:
 ### 1. Clone repo
 
 ```
-git clone https://github.com/<your-username>/ui-component-system.git
+git clone https://github.com/rvos86/ui-component-system.git
 cd ui-component-system
 ```
 
