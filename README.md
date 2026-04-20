@@ -15,8 +15,7 @@ Designed as a portfolio project to demonstrate **frontend architecture, system t
 
 - 🧱 Component-based architecture (Atomic Design inspired)
 - 📚 Storybook as single source of truth
-- 🧪 Automated unit + visual testing
-- 👀 Playwright visual regression testing (Story-driven)
+- 🧪 Automated unit, visual, and a11y testing (including axe audits per story)
 - ♿ Automated a11y audits on every story via axe + Playwright
 - ⚙️ Fully automated CI pipeline (GitHub Actions)
 - 🎨 Design tokens + Tailwind + CVA
@@ -35,26 +34,28 @@ This project explores:
 - **Scaling** component architecture in a predictable way
 - Using **Storybook** as a **single source of truth** for development and testing
 
-More importantly, it reflects how I approach:
+It reflects how I approach frontend engineering in practice:
 
 - **System design over ad-hoc implementation**
 - **Automation over manual processes**
 - **Consistency through constraints (design tokens, CVA)**
 - **Quality as a built-in concern (testing + CI), not an afterthought**
 
+This project treats UI not as a collection of components, but as a system that must remain predictable under scale and complexity.
+
 ---
 
 ## 🧩 System in Practice
 
-While this repository primarily focuses on the UI component system and architecture, it is also applied in a real example application: **TaskFlow**.
+While this repository focuses on the UI system itself, it is validated through a real application: **TaskFlow**.
 
-TaskFlow is a task management app used to demonstrate how the system behaves in a realistic scenario, including:
+TaskFlow is a task management app used to prove that the system holds under real-world complexity, including:
 
 - Complex component composition
-- Real-world state management patterns
-- Consistent UI behavior across features
+- Real-world state management
+- Consistent UI behavior across features and screen sizes
 
-→ The app itself is not the goal, but a **validation of the system design in practice**.
+→ The app is a byproduct — the system is the product.
 
 ---
 
@@ -75,6 +76,9 @@ Key decisions:
 
 - **Separation of concerns by composition layer**  
   Atoms, molecules, and organisms enforce predictable complexity growth.
+
+- **State modeled as a predictable system**  
+  Application state is treated as a single source of truth, avoiding duplication and ensuring consistent UI behavior.
 
 - **Test-driven UI validation strategy**  
   Storybook acts as the source of truth for visual and accessibility testing.
