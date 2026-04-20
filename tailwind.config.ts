@@ -17,9 +17,9 @@ export default {
           DEFAULT: '#e5e7eb', // gray-200
           hover: '#d1d5db',
         },
-        danger: '#db493b',
+        danger: '#c0392b',
         muted: '#e3e6ed',
-        success: '#2b925a',
+        success: '#1a7a46',
         warning: '#f3d77b',
       },
 
