@@ -93,7 +93,22 @@ Key decisions:
 Example:
 
 ```
-buttonStyles({ variant: 'primary', size: 'md' })
+const badgeStyles = cva(
+  'inline-flex items-center rounded-md px-3 py-1 text-sm font-medium',
+  {
+    variants: {
+      variant: {
+        danger: 'bg-danger text-white',
+        warning: 'bg-warning text-gray-800',
+        success: 'bg-success text-white',
+        muted: 'bg-muted text-gray-800',
+      },
+    },
+    defaultVariants: {
+      variant: 'muted',
+    },
+  }
+);
 ```
 
 ---
