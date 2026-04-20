@@ -9,7 +9,8 @@ const entries = await fetchStorybookEntries();
 const components = groupStoriesByComponent(entries);
 
 // Normalize Storybook component name to filesystem-safe folder name
-const getComponentFolder = (name: string) => slugify(name.replace('UI/', ''));
+const getComponentFolder = (name: string) =>
+  slugify(name.replace(/^(Atoms|Molecules|Organisms)\//, ''));
 
 // Normalize story name to filesystem-safe file name
 const getStoryFileName = (name: string) => slugify(name);
