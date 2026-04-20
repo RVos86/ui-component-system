@@ -174,6 +174,8 @@ Automated GitHub Actions pipeline with six jobs across two stages:
 - Coverage report uploaded as an artifact on every run
 - Designed for PR-based workflows
 
+> The pipeline is implemented in GitHub Actions. The same logic maps directly to GitLab CI using native stages — a migration would be a syntax translation, not a rethink.
+
 ---
 
 ## 🚀 Getting Started
