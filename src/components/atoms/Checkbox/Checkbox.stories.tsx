@@ -39,8 +39,18 @@ export const Checked: Story = {
   },
 };
 
-export const WithoutLabel: Story = {
-  args: {},
+export const WithAriaLabel: Story = {
+  args: {
+    'aria-label': 'Mark as complete',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'When no visible label is needed, use aria-label to ensure the checkbox remains accessible to screen readers.',
+      },
+    },
+  },
 };
 
 export const Disabled: Story = {
