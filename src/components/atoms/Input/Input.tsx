@@ -27,13 +27,7 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   icon?: React.ReactNode;
 };
 
-export function Input({
-  label,
-  error,
-  icon,
-  className,
-  ...props
-}: InputProps) {
+export function Input({ label, error, icon, className, ...props }: InputProps) {
   const id = useId();
   const errorId = `${id}-error`;
 
@@ -46,7 +40,9 @@ export function Input({
       )}
       <div className="relative">
         {icon && (
-          <span data-testid="input-icon" className="pointer-events-none absolute inset-y-0 left-2.5 flex items-center text-gray-400 [&>svg]:size-4">
+          <span
+            data-testid="input-icon"
+            className="pointer-events-none absolute inset-y-0 left-2.5 flex items-center text-gray-400 [&>svg]:size-4">
             {icon}
           </span>
         )}

@@ -8,12 +8,7 @@ export type CheckboxProps = Omit<
   label?: string;
 };
 
-export function Checkbox({
-  label,
-  disabled,
-  className,
-  ...props
-}: CheckboxProps) {
+export function Checkbox({ label, disabled, ...props }: CheckboxProps) {
   const id = useId();
 
   return (
