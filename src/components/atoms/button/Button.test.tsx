@@ -5,12 +5,6 @@ import userEvent from '@testing-library/user-event';
 import { axe } from 'jest-axe';
 
 describe('Button', () => {
-  it('renders correctly', () => {
-    render(<Button variant="primary">Click me</Button>);
-
-    expect(screen.getByText('Click me')).toBeInTheDocument();
-  });
-
   it('handles click events', async () => {
     const user = userEvent.setup();
     const handleClick = vi.fn();

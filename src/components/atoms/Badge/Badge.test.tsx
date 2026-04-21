@@ -3,12 +3,6 @@ import { axe } from 'jest-axe';
 import { Badge } from './Badge';
 
 describe('Badge', () => {
-  it('renders correctly', () => {
-    render(<Badge variant="danger">High</Badge>);
-
-    expect(screen.getByText('High')).toBeInTheDocument();
-  });
-
   it('renders as a span element', () => {
     render(<Badge variant="success">Completed</Badge>);
 
