@@ -1,5 +1,7 @@
 import { Button } from '@/components';
+import { Input } from '@/components';
 import { Typography } from '@/components';
+import { Search } from 'lucide-react';
 
 export default function App() {
   return (
@@ -8,6 +10,12 @@ export default function App() {
         UI Component System
       </Typography>
       <Button>Click me</Button>
+      <Input
+        label="Let's look for a task!"
+        icon={<Search />}
+        placeholder="Search tasks..."
+        error=""
+      />
     </div>
   );
 }
