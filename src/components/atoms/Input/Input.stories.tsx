@@ -30,6 +30,7 @@ export const Playground: Story = {
 
 export const Default: Story = {
   args: {
+    label: 'Search',
     placeholder: 'Search tasks...',
   },
 };
