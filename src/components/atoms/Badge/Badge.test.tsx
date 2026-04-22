@@ -13,7 +13,7 @@ describe('Badge', () => {
     ['danger', 'bg-danger', 'text-white'],
     ['warning', 'bg-warning', 'text-gray-800'],
     ['success', 'bg-success', 'text-white'],
-    ['muted', 'bg-muted', 'text-gray-800'],
+    ['muted', 'bg-gray-200', 'text-gray-800'],
   ] as const)(
     'applies correct background and text color for %s variant',
     (variant, bgClass, textClass) => {
@@ -28,7 +28,7 @@ describe('Badge', () => {
   it('defaults to muted variant', () => {
     render(<Badge>Label</Badge>);
 
-    expect(screen.getByText('Label')).toHaveClass('bg-muted');
+    expect(screen.getByText('Label')).toHaveClass('bg-gray-200');
   });
 
   it('accepts additional className', () => {

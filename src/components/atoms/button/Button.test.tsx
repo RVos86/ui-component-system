@@ -37,7 +37,7 @@ describe('Button', () => {
 
   it.each([
     ['primary', 'bg-primary'],
-    ['secondary', 'bg-secondary'],
+    ['secondary', 'bg-gray-200'],
   ] as const)('applies %s variant classes', (variant, expectedClass) => {
     render(<Button variant={variant}>Click me</Button>);
 
@@ -56,17 +56,13 @@ describe('Button', () => {
 
   describe('icons', () => {
     it('renders a left icon when leftIcon is provided', () => {
-      render(
-        <Button leftIcon={<span data-testid="left-icon" />}>Click me</Button>
-      );
+      render(<Button leftIcon={<span data-testid="left-icon" />}>Click me</Button>);
 
       expect(screen.getByTestId('left-icon')).toBeInTheDocument();
     });
 
     it('renders a right icon when rightIcon is provided', () => {
-      render(
-        <Button rightIcon={<span data-testid="right-icon" />}>Click me</Button>
-      );
+      render(<Button rightIcon={<span data-testid="right-icon" />}>Click me</Button>);
 
       expect(screen.getByTestId('right-icon')).toBeInTheDocument();
     });

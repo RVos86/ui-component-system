@@ -54,9 +54,7 @@ describe('Checkbox', () => {
 
     expect(screen.getByRole('checkbox')).not.toBeChecked();
 
-    rerender(
-      <Checkbox label="Mark as complete" checked={true} onChange={vi.fn()} />
-    );
+    rerender(<Checkbox label="Mark as complete" checked={true} onChange={vi.fn()} />);
 
     expect(screen.getByRole('checkbox')).toBeChecked();
   });
@@ -86,17 +84,13 @@ describe('Checkbox', () => {
     });
 
     it('has no axe violations when checked', async () => {
-      const { container } = render(
-        <Checkbox label="Mark as complete" defaultChecked />
-      );
+      const { container } = render(<Checkbox label="Mark as complete" defaultChecked />);
 
       expect(await axe(container)).toHaveNoViolations();
     });
 
     it('has no axe violations when disabled', async () => {
-      const { container } = render(
-        <Checkbox label="Mark as complete" disabled />
-      );
+      const { container } = render(<Checkbox label="Mark as complete" disabled />);
 
       expect(await axe(container)).toHaveNoViolations();
     });

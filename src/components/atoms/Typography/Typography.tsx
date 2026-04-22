@@ -34,28 +34,20 @@ type FlexibleProps = React.HTMLAttributes<HTMLElement> & {
 
 export type TypographyProps = HeadingProps | FlexibleProps;
 
-const elementMap: Record<HeadingVariant | FlexibleVariant, React.ElementType> =
-  {
-    h1: 'h1',
-    h2: 'h2',
-    h3: 'h3',
-    h4: 'h4',
-    h5: 'h5',
-    h6: 'h6',
-    body: 'p',
-    small: 'span',
-    caption: 'span',
-  };
+const elementMap: Record<HeadingVariant | FlexibleVariant, React.ElementType> = {
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+  h5: 'h5',
+  h6: 'h6',
+  body: 'p',
+  small: 'span',
+  caption: 'span',
+};
 
-export function Typography({
-  variant = 'body',
-  className,
-  ...props
-}: TypographyProps) {
-  const { as: Component = elementMap[variant], ...rest } =
-    props as FlexibleProps;
+export function Typography({ variant = 'body', className, ...props }: TypographyProps) {
+  const { as: Component = elementMap[variant], ...rest } = props as FlexibleProps;
 
-  return (
-    <Component className={typographyStyles({ variant, className })} {...rest} />
-  );
+  return <Component className={typographyStyles({ variant, className })} {...rest} />;
 }

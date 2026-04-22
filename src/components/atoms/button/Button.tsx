@@ -8,7 +8,7 @@ const buttonStyles = cva(
         primary:
           'bg-primary text-white hover:bg-primary-hover focus-visible:ring-primary',
         secondary:
-          'bg-secondary text-black hover:bg-secondary-hover focus-visible:ring-secondary',
+          'bg-gray-200 text-gray-900 hover:bg-gray-300 focus-visible:ring-gray-300',
       },
       size: {
         sm: 'px-2 py-1 text-sm',
@@ -55,15 +55,13 @@ export function Button({
       disabled={disabled}
       {...props}>
       {leftIcon && (
-        <span
-          className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}>
+        <span className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}>
           {leftIcon}
         </span>
       )}
       {children}
       {rightIcon && (
-        <span
-          className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}>
+        <span className={`inline-flex items-center ${iconClass} [&>svg]:size-full`}>
           {rightIcon}
         </span>
       )}

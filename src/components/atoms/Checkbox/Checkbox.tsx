@@ -1,10 +1,7 @@
 import { useId } from 'react';
 import { Check } from 'lucide-react';
 
-export type CheckboxProps = Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  'type'
-> & {
+export type CheckboxProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & {
   label?: string;
 };
 
@@ -30,9 +27,7 @@ export function Checkbox({ label, disabled, ...props }: CheckboxProps) {
         <Check className="pointer-events-none absolute inset-0 m-auto size-3 text-transparent transition-colors peer-checked:text-white" />
       </span>
       {label && (
-        <span className="select-none text-sm font-medium text-gray-700">
-          {label}
-        </span>
+        <span className="select-none text-sm font-medium text-gray-700">{label}</span>
       )}
     </label>
   );

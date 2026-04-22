@@ -67,18 +67,13 @@ describe('Input', () => {
     it('renders the error message', () => {
       render(<Input label="Search" error="Enter at least 3 characters." />);
 
-      expect(
-        screen.getByText('Enter at least 3 characters.')
-      ).toBeInTheDocument();
+      expect(screen.getByText('Enter at least 3 characters.')).toBeInTheDocument();
     });
 
     it('sets aria-invalid when error is present', () => {
       render(<Input label="Search" error="Required" />);
 
-      expect(screen.getByRole('textbox')).toHaveAttribute(
-        'aria-invalid',
-        'true'
-      );
+      expect(screen.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true');
     });
 
     it('associates error message via aria-describedby', () => {
@@ -104,9 +99,7 @@ describe('Input', () => {
     it('does not set aria-describedby when no error', () => {
       render(<Input label="Search" />);
 
-      expect(screen.getByRole('textbox')).not.toHaveAttribute(
-        'aria-describedby'
-      );
+      expect(screen.getByRole('textbox')).not.toHaveAttribute('aria-describedby');
     });
   });
 
@@ -145,10 +138,7 @@ describe('Input', () => {
     it('sets aria-required when required prop is set', () => {
       render(<Input label="Search" required />);
 
-      expect(screen.getByRole('textbox')).toHaveAttribute(
-        'aria-required',
-        'true'
-      );
+      expect(screen.getByRole('textbox')).toHaveAttribute('aria-required', 'true');
     });
 
     it('does not set aria-required when not required', () => {

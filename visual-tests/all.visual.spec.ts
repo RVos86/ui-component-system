@@ -27,13 +27,10 @@ for (const [componentName, stories] of components) {
         await page.waitForLoadState('networkidle');
         await page.evaluate(() => document.fonts.ready);
 
-        await expect(page).toHaveScreenshot(
-          `${componentFolder}/${storyFileName}.png`,
-          {
-            // Allow minor rendering differences between OS/CI environments
-            maxDiffPixelRatio: 0.02,
-          }
-        );
+        await expect(page).toHaveScreenshot(`${componentFolder}/${storyFileName}.png`, {
+          // Allow minor rendering differences between OS/CI environments
+          maxDiffPixelRatio: 0.02,
+        });
       });
     }
   });

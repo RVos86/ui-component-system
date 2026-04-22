@@ -8,7 +8,7 @@ const badgeStyles = cva(
         danger: 'bg-danger text-white',
         warning: 'bg-warning text-gray-800',
         success: 'bg-success text-white',
-        muted: 'bg-muted text-gray-800',
+        muted: 'bg-gray-200 text-gray-800',
       },
     },
     defaultVariants: {

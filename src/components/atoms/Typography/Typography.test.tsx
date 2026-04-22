@@ -34,14 +34,11 @@ describe('Typography', () => {
   it.each([
     ['small', 'SPAN'],
     ['caption', 'SPAN'],
-  ] as const)(
-    '%s variant renders as <span> by default',
-    (variant, expectedTag) => {
-      render(<Typography variant={variant}>Text</Typography>);
+  ] as const)('%s variant renders as <span> by default', (variant, expectedTag) => {
+    render(<Typography variant={variant}>Text</Typography>);
 
-      expect(screen.getByText('Text').tagName).toBe(expectedTag);
-    }
-  );
+    expect(screen.getByText('Text').tagName).toBe(expectedTag);
+  });
 
   it('allows overriding the element via `as` for flexible variants', () => {
     render(
@@ -63,14 +60,11 @@ describe('Typography', () => {
     ['body', 'text-base'],
     ['small', 'text-sm'],
     ['caption', 'text-xs'],
-  ] as const)(
-    '%s variant applies correct text size class',
-    (variant, expectedClass) => {
-      render(<Typography variant={variant}>Text</Typography>);
+  ] as const)('%s variant applies correct text size class', (variant, expectedClass) => {
+    render(<Typography variant={variant}>Text</Typography>);
 
-      expect(screen.getByText('Text')).toHaveClass(expectedClass);
-    }
-  );
+    expect(screen.getByText('Text')).toHaveClass(expectedClass);
+  });
 
   it('forwards additional className', () => {
     render(<Typography className="custom-class">Text</Typography>);
@@ -80,9 +74,7 @@ describe('Typography', () => {
 
   describe('accessibility', () => {
     it('has no axe violations for body variant', async () => {
-      const { container } = render(
-        <Typography variant="body">Body text</Typography>
-      );
+      const { container } = render(<Typography variant="body">Body text</Typography>);
 
       expect(await axe(container)).toHaveNoViolations();
     });
@@ -90,9 +82,7 @@ describe('Typography', () => {
     it.each(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const)(
       'has no axe violations for %s variant',
       async (variant) => {
-        const { container } = render(
-          <Typography variant={variant}>Heading</Typography>
-        );
+        const { container } = render(<Typography variant={variant}>Heading</Typography>);
 
         expect(await axe(container)).toHaveNoViolations();
       }
