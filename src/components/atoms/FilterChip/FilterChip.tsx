@@ -57,18 +57,25 @@ const filterChipStyles = cva(
 export type FilterChipProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   VariantProps<typeof filterChipStyles>;
 
-export function FilterChip({ active, variant, className, children, ...props }: FilterChipProps) {
+export function FilterChip({
+  active,
+  variant,
+  className,
+  children,
+  ...props
+}: FilterChipProps) {
   return (
     <button
       type="button"
       className={filterChipStyles({ active, variant, className })}
       aria-pressed={active ?? false}
       {...props}>
-      {variant === 'folder' && (
-        active
-          ? <FolderOpen className="size-4 shrink-0" />
-          : <Folder className="size-4 shrink-0" />
-      )}
+      {variant === 'folder' &&
+        (active ? (
+          <FolderOpen className="size-4 shrink-0" />
+        ) : (
+          <Folder className="size-4 shrink-0" />
+        ))}
       {children}
     </button>
   );

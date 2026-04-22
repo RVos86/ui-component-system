@@ -64,7 +64,11 @@ export const Playground: Story = {
     variant: 'default',
   },
   render: ({ direction, variant }) => (
-    <FilterBarDemo filters={filters} direction={direction ?? 'horizontal'} variant={variant ?? 'default'} />
+    <FilterBarDemo
+      filters={filters}
+      direction={direction ?? 'horizontal'}
+      variant={variant ?? 'default'}
+    />
   ),
 };
 

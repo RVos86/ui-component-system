@@ -34,11 +34,26 @@ const filterBarStyles = cva('flex', {
 export type FilterBarProps = React.HTMLAttributes<HTMLDivElement> &
   VariantProps<typeof filterBarStyles>;
 
-export function FilterBar({ direction, variant, className, children, ...props }: FilterBarProps) {
-  const chipVariant = variant === 'segmented' ? 'underline' : direction === 'vertical' ? 'folder' : 'filled';
+export function FilterBar({
+  direction,
+  variant,
+  className,
+  children,
+  ...props
+}: FilterBarProps) {
+  const chipVariant =
+    variant === 'segmented'
+      ? 'underline'
+      : direction === 'vertical'
+        ? 'folder'
+        : 'filled';
 
   const chips = Children.map(children, (child) =>
-    isValidElement(child) ? cloneElement(child as React.ReactElement<{ variant?: string }>, { variant: chipVariant }) : child
+    isValidElement(child)
+      ? cloneElement(child as React.ReactElement<{ variant?: string }>, {
+          variant: chipVariant,
+        })
+      : child
   );
 
   return (
