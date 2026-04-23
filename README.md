@@ -186,6 +186,7 @@ npx playwright test all.a11y.spec.ts
 Automated GitHub Actions pipeline across two stages:
 
 **CI — runs on every push and PR:**
+
 - **Format** — Prettier format check
 - **Lint** — ESLint
 - **Typecheck** — TypeScript, gates the test jobs below
@@ -197,6 +198,7 @@ Automated GitHub Actions pipeline across two stages:
 - Designed for PR-based workflows
 
 **CD — runs on `main` after all CI jobs pass:**
+
 - **Deploy Storybook** — automatically publishes to GitHub Pages
 
 > The pipeline is implemented in GitHub Actions. The same logic maps directly to GitLab CI using native stages — a migration would be a syntax translation, not a rethink.
