@@ -183,6 +183,8 @@ npx playwright test all.a11y.spec.ts
 
 ## ⚙️ CI / CD Pipeline
 
+![Pipeline](./docs/pipeline.png)
+
 Automated GitHub Actions pipeline across two stages:
 
 **CI — runs on every push and PR:**
