@@ -1,9 +1,9 @@
 # 🎨 UI Component System
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Build](https://img.shields.io/github/actions/workflow/status/rvos86/ui-component-system/ci.yml?label=tests)
+![Build](https://img.shields.io/github/actions/workflow/status/rvos86/ui-component-system/ci.yml?label=CI%20%2F%20CD)
 ![Node](https://img.shields.io/badge/node-%3E%3D18-brightgreen)
-![Storybook](https://img.shields.io/badge/storybook-ready-ff4785)
+[![Storybook](https://img.shields.io/badge/storybook-live-ff4785)](https://rvos86.github.io/ui-component-system)
 
 A scalable **component-driven UI system** built with React, TypeScript, and production-grade tooling.
 
@@ -119,7 +119,9 @@ const badgeStyles = cva(
 
 ## 📚 Storybook
 
-Storybook is the source of truth for all components.
+→ **[View live Storybook](https://rvos86.github.io/ui-component-system)**
+
+Storybook is the source of truth for all components. It is automatically deployed to GitHub Pages on every push to `main` that passes CI.
 
 Used for:
 
@@ -179,10 +181,11 @@ npx playwright test all.visual.spec.ts
 npx playwright test all.a11y.spec.ts
 ```
 
-## ⚙️ CI Pipeline
+## ⚙️ CI / CD Pipeline
 
-Automated GitHub Actions pipeline with six jobs across two stages:
+Automated GitHub Actions pipeline across two stages:
 
+**CI — runs on every push and PR:**
 - **Format** — Prettier format check
 - **Lint** — ESLint
 - **Typecheck** — TypeScript, gates the test jobs below
@@ -192,6 +195,9 @@ Automated GitHub Actions pipeline with six jobs across two stages:
 - Fails fast on format/lint/type errors before running tests
 - Coverage report uploaded as an artifact on every run
 - Designed for PR-based workflows
+
+**CD — runs on `main` after all CI jobs pass:**
+- **Deploy Storybook** — automatically publishes to GitHub Pages
 
 > The pipeline is implemented in GitHub Actions. The same logic maps directly to GitLab CI using native stages — a migration would be a syntax translation, not a rethink.
 
