@@ -1,11 +1,12 @@
 import { Button } from '@/components';
+import { Divider } from '@/components';
 import { Input } from '@/components';
 import { Typography } from '@/components';
 import { Search } from 'lucide-react';
 
 export default function App() {
   return (
-    <div className="p-6">
+    <div className="p-6 flex-col space-y-6">
       <Typography variant="h1" className="text-blue-600">
         UI Component System
       </Typography>
@@ -16,6 +17,7 @@ export default function App() {
         placeholder="Search tasks..."
         error=""
       />
+      <Divider />
     </div>
   );
 }
