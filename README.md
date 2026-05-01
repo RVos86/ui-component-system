@@ -15,8 +15,7 @@ Designed as a portfolio project to demonstrate **frontend architecture, system t
 
 - 🧱 Component-based architecture (Atomic Design inspired)
 - 📚 Storybook as single source of truth
-- 🧪 Automated unit, visual, and a11y testing (including axe audits per story)
-- ♿ Automated a11y audits on every story via axe + Playwright
+- 🧪 Unit tests + automated visual regression and a11y audits on every story (Playwright + axe)
 - ⚙️ Fully automated CI pipeline (GitHub Actions)
 - 🎨 Design tokens + Tailwind + CVA
 - 🚀 Zero-maintenance test generation system
