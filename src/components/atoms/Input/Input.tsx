@@ -39,7 +39,15 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   background?: 'white' | 'gray';
 };
 
-export function Input({ label, error, icon, trailing, background, className, ...props }: InputProps) {
+export function Input({
+  label,
+  error,
+  icon,
+  trailing,
+  background,
+  className,
+  ...props
+}: InputProps) {
   const id = useId();
   const errorId = `${id}-error`;
 

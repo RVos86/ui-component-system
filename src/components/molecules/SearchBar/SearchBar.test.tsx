@@ -58,7 +58,9 @@ describe('SearchBar', () => {
     it('is not visible when the field is empty', () => {
       render(<SearchBar label="Search" />);
 
-      expect(screen.queryByRole('button', { name: 'Clear search' })).not.toBeInTheDocument();
+      expect(
+        screen.queryByRole('button', { name: 'Clear search' })
+      ).not.toBeInTheDocument();
     });
 
     it('appears when the user types', async () => {
