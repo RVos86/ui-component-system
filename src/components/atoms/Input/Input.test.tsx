@@ -134,6 +134,40 @@ describe('Input', () => {
     });
   });
 
+  describe('background', () => {
+    it('applies bg-white by default', () => {
+      render(<Input label="Task title" />);
+
+      expect(screen.getByRole('textbox')).toHaveClass('bg-white');
+    });
+
+    it('applies bg-gray-50 when background is gray', () => {
+      render(<Input label="Task title" background="gray" />);
+
+      expect(screen.getByRole('textbox')).toHaveClass('bg-gray-50');
+    });
+  });
+
+  describe('trailing', () => {
+    it('renders a trailing element when trailing is provided', () => {
+      render(<Input label="Task title" trailing={<button>X</button>} />);
+
+      expect(screen.getByTestId('input-trailing')).toBeInTheDocument();
+    });
+
+    it('does not render a trailing element when trailing is not provided', () => {
+      render(<Input label="Task title" />);
+
+      expect(screen.queryByTestId('input-trailing')).not.toBeInTheDocument();
+    });
+
+    it('applies pr-9 when trailing is provided', () => {
+      render(<Input label="Task title" trailing={<button>X</button>} />);
+
+      expect(screen.getByRole('textbox')).toHaveClass('pr-9');
+    });
+  });
+
   describe('required', () => {
     it('sets aria-required when required prop is set', () => {
       render(<Input label="Search" required />);

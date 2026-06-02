@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Search } from 'lucide-react';
+import { Tag } from 'lucide-react';
 import { Input } from './Input';
 
 const meta: Meta<typeof Input> = {
@@ -23,36 +23,36 @@ type Story = StoryObj<typeof Input>;
 export const Playground: Story = {
   tags: ['!autodocs'],
   args: {
-    label: 'Search',
-    placeholder: 'Search tasks...',
+    label: 'Task title',
+    placeholder: 'Enter task title...',
   },
 };
 
 export const Default: Story = {
   args: {
-    label: 'Search',
-    placeholder: 'Search tasks...',
+    label: 'Task title',
+    placeholder: 'Enter task title...',
   },
 };
 
 export const WithIcon: Story = {
   args: {
-    label: 'Search',
-    placeholder: 'Search tasks...',
-    icon: <Search />,
+    label: 'Task title',
+    placeholder: 'Enter task title...',
+    icon: <Tag />,
   },
   parameters: {
     docs: {
-      description: { story: 'Input with a leading search icon.' },
+      description: { story: 'Input with a leading icon.' },
     },
   },
 };
 
 export const WithError: Story = {
   args: {
-    label: 'Search',
-    placeholder: 'Search tasks...',
-    error: 'Please enter at least 3 characters.',
+    label: 'Task title',
+    placeholder: 'Enter task title...',
+    error: 'Task title is required.',
   },
   parameters: {
     docs: {
@@ -63,11 +63,26 @@ export const WithError: Story = {
   },
 };
 
+export const GrayBackground: Story = {
+  args: {
+    label: 'Task title',
+    placeholder: 'Enter task title...',
+    background: 'gray',
+  },
+  parameters: {
+    backgrounds: { default: 'white' },
+    docs: {
+      description: {
+        story: 'Use background="gray" to give the input a gray background.',
+      },
+    },
+  },
+};
+
 export const Disabled: Story = {
   args: {
-    label: 'Search',
-    placeholder: 'Search tasks...',
-    icon: <Search />,
+    label: 'Task title',
+    placeholder: 'Enter task title...',
     disabled: true,
   },
 };

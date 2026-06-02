@@ -9,3 +9,4 @@ export { Typography } from './atoms/Typography';
 
 // Molecules
 export { FilterBar } from './molecules/FilterBar';
+export { SearchBar } from './molecules/SearchBar';

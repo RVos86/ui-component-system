@@ -2,7 +2,7 @@ import { useId } from 'react';
 import { cva } from 'class-variance-authority';
 
 const inputStyles = cva(
-  'w-full rounded-md border bg-white px-3 py-2 font-sans text-sm text-gray-900 placeholder:text-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed',
+  'w-full rounded-md border px-3 py-2 font-sans text-sm text-gray-900 placeholder:text-gray-400 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed',
   {
     variants: {
       hasError: {
@@ -13,10 +13,20 @@ const inputStyles = cva(
         true: 'pl-9',
         false: null,
       },
+      hasTrailing: {
+        true: 'pr-9',
+        false: null,
+      },
+      background: {
+        white: 'bg-white',
+        gray: 'bg-gray-50',
+      },
     },
     defaultVariants: {
       hasError: false,
       hasIcon: false,
+      hasTrailing: false,
+      background: 'white',
     },
   }
 );
@@ -25,9 +35,11 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   label?: string;
   error?: string;
   icon?: React.ReactNode;
+  trailing?: React.ReactNode;
+  background?: 'white' | 'gray';
 };
 
-export function Input({ label, error, icon, className, ...props }: InputProps) {
+export function Input({ label, error, icon, trailing, background, className, ...props }: InputProps) {
   const id = useId();
   const errorId = `${id}-error`;
 
@@ -54,10 +66,19 @@ export function Input({ label, error, icon, className, ...props }: InputProps) {
           className={inputStyles({
             hasError: !!error,
             hasIcon: !!icon,
+            hasTrailing: !!trailing,
+            background,
             className,
           })}
           {...props}
         />
+        {trailing && (
+          <span
+            data-testid="input-trailing"
+            className="absolute inset-y-0 right-2.5 flex items-center text-gray-400 [&>svg]:size-4">
+            {trailing}
+          </span>
+        )}
       </div>
       {error && (
         <span id={errorId} className="text-sm text-danger">
