@@ -8,5 +8,6 @@ export { Input } from './atoms/Input';
 export { Typography } from './atoms/Typography';
 
 // Molecules
+export { DatePicker } from './molecules/DatePicker';
 export { FilterBar } from './molecules/FilterBar';
 export { SearchBar } from './molecules/SearchBar';
