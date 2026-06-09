@@ -253,7 +253,7 @@ npx playwright test
 
 ---
 
-## 🤝 Contributing
+## 🛠️ Development Workflow
 
 ### Git hooks
 
