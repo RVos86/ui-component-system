@@ -259,10 +259,10 @@ npx playwright test
 
 Hooks are installed automatically on `npm install`. They enforce quality locally before anything reaches CI:
 
-| Hook | What runs |
-|---|---|
+| Hook         | What runs                                                                          |
+| ------------ | ---------------------------------------------------------------------------------- |
 | `pre-commit` | Prettier (auto-fix) + ESLint (auto-fix) on staged files, then TypeScript typecheck |
-| `pre-push` | Full test suite (`vitest --run`) |
+| `pre-push`   | Full test suite (`vitest --run`)                                                   |
 
 ### Commit message format
 
