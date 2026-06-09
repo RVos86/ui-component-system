@@ -1,5 +1,6 @@
 import { Children, cloneElement, isValidElement } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
+import { TEST_IDS } from '@/test/test-ids';
 
 const filterBarStyles = cva('flex', {
   variants: {
@@ -58,6 +59,7 @@ export function FilterBar({
 
   return (
     <div
+      data-testid={TEST_IDS.filterBar.root}
       role="group"
       className={filterBarStyles({ direction, variant, className })}
       {...props}>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Search, X } from 'lucide-react';
 import { Input, type InputProps } from '@/components/atoms/Input';
+import { TEST_IDS } from '@/test/test-ids';
 
 export type SearchBarProps = Omit<
   InputProps,
@@ -37,6 +38,7 @@ export function SearchBar({
       trailing={
         value ? (
           <button
+            data-testid={TEST_IDS.searchBar.clearButton}
             type="button"
             onClick={handleClear}
             aria-label="Clear search"

@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority';
+import { TEST_IDS } from '@/test/test-ids';
 
 const badgeStyles = cva(
   'inline-flex items-center rounded-md px-3 py-1 text-sm font-medium',
@@ -22,7 +23,7 @@ export type BadgeProps = React.HTMLAttributes<HTMLSpanElement> &
 
 export function Badge({ variant, className, children, ...props }: BadgeProps) {
   return (
-    <span className={badgeStyles({ variant, className })} {...props}>
+    <span data-testid={TEST_IDS.badge.root} className={badgeStyles({ variant, className })} {...props}>
       {children}
     </span>
   );

@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Folder, FolderOpen } from 'lucide-react';
+import { TEST_IDS } from '@/test/test-ids';
 
 const filterChipStyles = cva(
   'inline-flex items-center gap-2 whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-primary',
@@ -66,6 +67,7 @@ export function FilterChip({
 }: FilterChipProps) {
   return (
     <button
+      data-testid={TEST_IDS.filterChip.root}
       type="button"
       className={filterChipStyles({ active, variant, className })}
       aria-pressed={active ?? false}

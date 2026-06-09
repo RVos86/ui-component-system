@@ -1,4 +1,5 @@
 import { cva } from 'class-variance-authority';
+import { TEST_IDS } from '@/test/test-ids';
 
 const typographyStyles = cva('font-sans', {
   variants: {
@@ -49,5 +50,5 @@ const elementMap: Record<HeadingVariant | FlexibleVariant, React.ElementType> = 
 export function Typography({ variant = 'body', className, ...props }: TypographyProps) {
   const { as: Component = elementMap[variant], ...rest } = props as FlexibleProps;
 
-  return <Component className={typographyStyles({ variant, className })} {...rest} />;
+  return <Component data-testid={TEST_IDS.typography.root} className={typographyStyles({ variant, className })} {...rest} />;
 }

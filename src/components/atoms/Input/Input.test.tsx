@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { axe } from 'jest-axe';
 import { Search } from 'lucide-react';
 import { Input } from './Input';
+import { TEST_IDS } from '@/test/test-ids';
 
 describe('Input', () => {
   it('renders correctly', () => {
@@ -124,13 +125,13 @@ describe('Input', () => {
     it('renders an icon wrapper when icon is provided', () => {
       render(<Input label="Search" icon={<Search />} />);
 
-      expect(screen.getByTestId('input-icon')).toBeInTheDocument();
+      expect(screen.getByTestId(TEST_IDS.input.icon)).toBeInTheDocument();
     });
 
     it('does not render an icon wrapper when no icon is provided', () => {
       render(<Input label="Search" />);
 
-      expect(screen.queryByTestId('input-icon')).not.toBeInTheDocument();
+      expect(screen.queryByTestId(TEST_IDS.input.icon)).not.toBeInTheDocument();
     });
   });
 
@@ -152,13 +153,13 @@ describe('Input', () => {
     it('renders a trailing element when trailing is provided', () => {
       render(<Input label="Task title" trailing={<button>X</button>} />);
 
-      expect(screen.getByTestId('input-trailing')).toBeInTheDocument();
+      expect(screen.getByTestId(TEST_IDS.input.trailing)).toBeInTheDocument();
     });
 
     it('does not render a trailing element when trailing is not provided', () => {
       render(<Input label="Task title" />);
 
-      expect(screen.queryByTestId('input-trailing')).not.toBeInTheDocument();
+      expect(screen.queryByTestId(TEST_IDS.input.trailing)).not.toBeInTheDocument();
     });
 
     it('applies pr-9 when trailing is provided', () => {

@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority';
+import { TEST_IDS } from '@/test/test-ids';
 
 const buttonStyles = cva(
   'inline-flex items-center gap-2 rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed',
@@ -50,6 +51,7 @@ export function Button({
 
   return (
     <button
+      data-testid={TEST_IDS.button.root}
       type={type ?? 'button'}
       className={buttonStyles({ variant, size, className })}
       disabled={disabled}

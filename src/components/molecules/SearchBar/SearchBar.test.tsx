@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe } from 'jest-axe';
 import { SearchBar } from './SearchBar';
+import { TEST_IDS } from '@/test/test-ids';
 
 describe('SearchBar', () => {
   it('renders a search input', () => {
@@ -13,7 +14,7 @@ describe('SearchBar', () => {
   it('renders the search icon', () => {
     render(<SearchBar label="Search" />);
 
-    expect(screen.getByTestId('input-icon')).toBeInTheDocument();
+    expect(screen.getByTestId(TEST_IDS.input.icon)).toBeInTheDocument();
   });
 
   it('uses the default placeholder', () => {

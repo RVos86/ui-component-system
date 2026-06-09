@@ -1,5 +1,6 @@
 import { useId } from 'react';
 import { Check } from 'lucide-react';
+import { TEST_IDS } from '@/test/test-ids';
 
 export type CheckboxProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> & {
   label?: string;
@@ -21,7 +22,7 @@ export function Checkbox({ label, disabled, ...props }: CheckboxProps) {
           {...props}
         />
         <span
-          data-testid="checkbox-box"
+          data-testid={TEST_IDS.checkbox.box}
           className="size-4 rounded-sm border border-gray-300 bg-white transition-colors peer-checked:border-success peer-checked:bg-success peer-focus-visible:ring-2 peer-focus-visible:ring-primary peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-background"
         />
         <Check className="pointer-events-none absolute inset-0 m-auto size-3 text-transparent transition-colors peer-checked:text-white" />
