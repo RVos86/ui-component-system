@@ -50,5 +50,11 @@ const elementMap: Record<HeadingVariant | FlexibleVariant, React.ElementType> = 
 export function Typography({ variant = 'body', className, ...props }: TypographyProps) {
   const { as: Component = elementMap[variant], ...rest } = props as FlexibleProps;
 
-  return <Component data-testid={TEST_IDS.typography.root} className={typographyStyles({ variant, className })} {...rest} />;
+  return (
+    <Component
+      data-testid={TEST_IDS.typography.root}
+      className={typographyStyles({ variant, className })}
+      {...rest}
+    />
+  );
 }
