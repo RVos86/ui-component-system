@@ -24,7 +24,7 @@ Designed as a portfolio project to demonstrate **frontend architecture, system t
 
 ## 🔬 Why this project exists
 
-> This repository is intentionally built as a portfolio project to demonstrate how I think about scalable frontend systems beyond isolated components.
+> This repository is intentionally built as a portfolio project to demonstrate how I think about scalable frontend systems — from architecture and component design down to code quality, commit discipline, and developer tooling.
 
 This project explores:
 
