@@ -79,6 +79,9 @@ Key decisions:
 - **State modeled as a predictable system**  
   Application state is treated as a single source of truth, avoiding duplication and ensuring consistent UI behavior.
 
+- **Centralised test IDs (`TEST_IDS`)**  
+  Every component exposes its elements via a single `src/test/test-ids.ts` file. No raw `data-testid` strings in component or test files — all references go through `TEST_IDS`. This keeps selectors refactor-safe and discoverable.
+
 - **Test-driven UI validation strategy**  
   Storybook acts as the source of truth for visual and accessibility testing.
 
@@ -222,6 +225,7 @@ npm install
 ```
 
 > 💡 Requires Node.js 18+
+> 💡 Git hooks (pre-commit, pre-push) are installed automatically via the `prepare` script
 
 ### 3. Run project
 
@@ -246,6 +250,38 @@ npm run test
 ```
 npx playwright test
 ```
+
+---
+
+## 🤝 Contributing
+
+### Git hooks
+
+Hooks are installed automatically on `npm install`. They enforce quality locally before anything reaches CI:
+
+| Hook | What runs |
+|---|---|
+| `pre-commit` | Prettier (auto-fix) + ESLint (auto-fix) on staged files, then TypeScript typecheck |
+| `pre-push` | Full test suite (`vitest --run`) |
+
+### Commit message format
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/) enforced via **commitizen**. Run commits from the terminal using:
+
+```
+git commit
+```
+
+This launches an interactive prompt:
+
+```
+? Select the type of change:   feat / fix / chore / docs / refactor / test / ...
+? What is the scope?           e.g. Button, DatePicker
+? Write a short description:   what changed and why
+? Longer description (opt.):   …
+```
+
+> ⚠️ GUI git clients (VS Code source control, Fork, etc.) bypass the terminal, so the prompt won't appear. Use `npm run commit` in a terminal instead.
 
 ---
 
