@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { action } from 'storybook/actions';
+import { userEvent, within } from 'storybook/test';
 import { DatePicker } from './DatePicker';
+import { TEST_IDS } from '@/test/test-ids';
 
 const meta: Meta<typeof DatePicker> = {
   title: 'Molecules/DatePicker',
@@ -70,5 +72,18 @@ export const Disabled: Story = {
     label: 'Due date',
     placeholder: 'Select a date...',
     disabled: true,
+  },
+};
+
+export const Open: Story = {
+  tags: ['!autodocs'],
+  render: (args) => <ControlledDatePicker {...args} />,
+  args: {
+    label: 'Due date',
+    selected: new Date(2026, 5, 15),
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByTestId(TEST_IDS.datePicker.input));
   },
 };

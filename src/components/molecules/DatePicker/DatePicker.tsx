@@ -3,6 +3,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { CalendarDays } from 'lucide-react';
 import { DayPicker } from 'react-day-picker';
 import { Input } from '@/components/atoms/Input';
+import { useClickOutside } from '@/hooks/useClickOutside';
 import { TEST_IDS } from '@/test/test-ids';
 
 const dayPickerClassNames = {
@@ -14,10 +15,10 @@ const dayPickerClassNames = {
   button_next: 'rounded p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-900',
   weeks: 'mt-1',
   weekdays: 'flex',
-  weekday: 'w-9 text-center text-xs font-medium text-gray-400 py-1',
-  week_number_header: 'w-9 text-center text-xs font-medium text-gray-300 py-1',
+  weekday: 'w-9 text-center text-xs font-medium text-gray-500 py-1',
+  week_number_header: 'w-9 text-center text-xs font-medium text-gray-500 py-1',
   week_number:
-    'w-9 h-9 text-center text-xs text-gray-300 flex items-center justify-center',
+    'w-9 h-9 text-center text-xs text-gray-500 flex items-center justify-center',
   week: 'flex mt-1',
   day: 'w-9 h-9',
   day_button:
@@ -52,6 +53,8 @@ export function DatePicker({
     if (isCalendarOpen) calendarRef.current?.focus();
   }, [isCalendarOpen]);
 
+  useClickOutside(containerRef, () => setIsCalendarOpen(false));
+
   const formattedDate = selected
     ? selected.toLocaleDateString('en-GB', {
         day: '2-digit',
@@ -67,14 +70,30 @@ export function DatePicker({
     }
   }
 
-  function handleBlur(e: React.FocusEvent) {
-    if (!containerRef.current?.contains(e.relatedTarget)) {
+  function handleTriggerKeyDown(e: React.KeyboardEvent) {
+    if (disabled) return;
+
+    switch (e.key) {
+      case 'Enter':
+      case ' ':
+        e.preventDefault();
+        setIsCalendarOpen((o) => !o);
+        break;
+      case 'Escape':
+        setIsCalendarOpen(false);
+        break;
+    }
+  }
+
+  function handleCalendarKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'Escape') {
       setIsCalendarOpen(false);
+      containerRef.current?.querySelector('input')?.focus();
     }
   }
 
   return (
-    <div ref={containerRef} className="relative" onBlur={handleBlur}>
+    <div ref={containerRef} className="relative">
       <Input
         data-testid={TEST_IDS.datePicker.input}
         role="combobox"
@@ -88,6 +107,7 @@ export function DatePicker({
         readOnly
         disabled={disabled}
         onClick={() => !disabled && setIsCalendarOpen((o) => !o)}
+        onKeyDown={handleTriggerKeyDown}
         className="cursor-pointer"
       />
       {isCalendarOpen && (
@@ -99,6 +119,7 @@ export function DatePicker({
           aria-label="Calendar"
           aria-modal="true"
           tabIndex={-1}
+          onKeyDown={handleCalendarKeyDown}
           className="absolute z-10 mt-1 rounded-md border border-gray-200 bg-white p-3 shadow-lg outline-none">
           <DayPicker
             mode="single"

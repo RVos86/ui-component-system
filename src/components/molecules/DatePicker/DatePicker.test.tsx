@@ -74,6 +74,50 @@ describe('DatePicker', () => {
     expect(handleDateChange).toHaveBeenCalledWith(new Date(2026, 5, 15));
   });
 
+  it('opens the calendar on Enter', async () => {
+    const user = userEvent.setup();
+    render(<DatePicker label="Due date" />);
+
+    screen.getByTestId(TEST_IDS.datePicker.input).focus();
+    await user.keyboard('{Enter}');
+
+    expect(screen.getByTestId(TEST_IDS.datePicker.calendar)).toBeInTheDocument();
+  });
+
+  it('opens the calendar on Space', async () => {
+    const user = userEvent.setup();
+    render(<DatePicker label="Due date" />);
+
+    screen.getByTestId(TEST_IDS.datePicker.input).focus();
+    await user.keyboard(' ');
+
+    expect(screen.getByTestId(TEST_IDS.datePicker.calendar)).toBeInTheDocument();
+  });
+
+  it('closes the calendar on Escape', async () => {
+    const user = userEvent.setup();
+    render(<DatePicker label="Due date" />);
+
+    const input = screen.getByTestId(TEST_IDS.datePicker.input);
+    input.focus();
+    await user.keyboard('{Enter}');
+    expect(screen.getByTestId(TEST_IDS.datePicker.calendar)).toBeInTheDocument();
+
+    await user.keyboard('{Escape}');
+    expect(screen.queryByTestId(TEST_IDS.datePicker.calendar)).not.toBeInTheDocument();
+  });
+
+  it('does not open via keyboard when disabled', async () => {
+    const user = userEvent.setup();
+    render(<DatePicker label="Due date" disabled />);
+
+    const input = screen.getByTestId(TEST_IDS.datePicker.input);
+    input.focus();
+    await user.keyboard('{Enter}');
+
+    expect(screen.queryByTestId(TEST_IDS.datePicker.calendar)).not.toBeInTheDocument();
+  });
+
   it('does not open when disabled', async () => {
     const user = userEvent.setup();
     render(<DatePicker label="Due date" disabled />);

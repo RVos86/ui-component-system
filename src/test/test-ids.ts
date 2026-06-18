@@ -8,6 +8,10 @@ export const TEST_IDS = {
   checkbox: {
     box: 'checkbox-box',
   },
+  dropdown: {
+    trigger: 'dropdown-trigger',
+    listbox: 'dropdown-listbox',
+  },
   datePicker: {
     input: 'datepicker-input',
     calendar: 'datepicker-calendar',
